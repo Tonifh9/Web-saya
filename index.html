@@ -3,643 +3,893 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Keamanan dasar -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com;">
-
-  <meta name="description" content="Rafi Web Selling - Jasa pembuatan website modern dan profesional.">
-  <meta name="theme-color" content="#05070a">
-
-  <title>Rafi Web Selling</title>
+  <meta name="description" content="Web Selling - Website modern dan profesional oleh Rafi.">
+  <title>Web Selling | Developed by Rafi</title>
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    html {
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #05070a;
-      color: white;
-      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #030712;
+      color: #f5f7ff;
+      line-height: 1.6;
     }
 
-    /* =========================
-       OPENING ANIMATION
-    ========================= */
-
-    #opening {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #05070a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    #opening.hide {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loader {
-      width: 90px;
-      height: 90px;
-      border: 3px solid rgba(0, 140, 255, 0.15);
-      border-top: 3px solid #008cff;
-      border-right: 3px solid #00c8ff;
-      border-radius: 50%;
-      animation: spin 1.2s linear infinite;
-      box-shadow:
-        0 0 20px rgba(0, 140, 255, 0.5),
-        0 0 50px rgba(0, 140, 255, 0.2);
-    }
-
-    .opening-name {
-      margin-top: 28px;
-      font-size: 30px;
-      font-weight: bold;
-      letter-spacing: 5px;
-      color: white;
-      animation: glow 1.5s ease-in-out infinite alternate;
-    }
-
-    .opening-name span {
-      color: #009dff;
-    }
-
-    .loading {
-      margin-top: 12px;
-      font-size: 12px;
-      color: #7cbfff;
-      letter-spacing: 4px;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 5px #008cff;
-      }
-      to {
-        text-shadow:
-          0 0 10px #008cff,
-          0 0 25px #008cff,
-          0 0 45px #0066ff;
-      }
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0.35;
-      }
-    }
-
-    /* =========================
-       BACKGROUND
-    ========================= */
-
-    .background-glow {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      background: #006eff;
-      filter: blur(180px);
-      opacity: 0.12;
-      border-radius: 50%;
-      top: -200px;
-      right: -150px;
-      pointer-events: none;
-    }
-
-    .background-glow.two {
-      top: auto;
-      right: auto;
-      bottom: -250px;
-      left: -200px;
-      background: #00c8ff;
-    }
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
+    /* NAVBAR */
     nav {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
-      padding: 18px 7%;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(3, 7, 18, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #111827;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: auto;
+      height: 70px;
+      padding: 0 25px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: rgba(5, 7, 10, 0.8);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(0, 153, 255, 0.15);
+      justify-content: space-between;
     }
 
     .logo {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
     }
 
     .logo span {
-      color: #009dff;
+      color: #1683ff;
     }
 
-    nav a {
-      color: #ddd;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 14px;
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
       transition: 0.3s;
     }
 
-    nav a:hover {
-      color: #009dff;
+    .nav-links a:hover {
+      color: #1683ff;
     }
 
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 80px 20px;
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
     }
 
-    .hero-content {
-      max-width: 800px;
-      animation: heroIn 1s ease 0.3s both;
-    }
-
-    @keyframes heroIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .badge {
+    /* BUTTON */
+    .btn {
       display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid rgba(0, 153, 255, 0.4);
-      border-radius: 30px;
-      color: #62bdff;
-      background: rgba(0, 130, 255, 0.08);
-      font-size: 13px;
-      margin-bottom: 25px;
+      background: #087cff;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
     }
 
-    h1 {
-      font-size: clamp(42px, 8vw, 80px);
-      line-height: 1;
-      margin-bottom: 25px;
+    .btn:hover {
+      background: #0065d8;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 123, 255, 0.25);
     }
 
-    h1 span {
-      color: #008cff;
-      text-shadow: 0 0 30px rgba(0, 140, 255, 0.45);
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: auto;
+      padding: 130px 25px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    .hero-text {
+      max-width: 570px;
+    }
+
+    .small-title {
+      color: #1683ff;
+      font-weight: bold;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 7vw, 78px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #1683ff;
+    }
+
+    .hero h2 {
+      font-size: clamp(25px, 4vw, 40px);
+      margin-bottom: 20px;
     }
 
     .hero p {
-      color: #a9b3c0;
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 600px;
-      margin: auto;
+      color: #94a3b8;
+      font-size: 18px;
+      margin-bottom: 30px;
     }
 
-    .buttons {
-      margin-top: 35px;
+    .hero-buttons {
       display: flex;
-      justify-content: center;
       gap: 15px;
       flex-wrap: wrap;
     }
 
-    .btn {
-      padding: 13px 25px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #1683ff;
+      color: #1683ff;
     }
 
-    .btn-primary {
-      background: #008cff;
+    .btn-outline:hover {
+      background: #1683ff;
       color: white;
-      box-shadow: 0 0 25px rgba(0, 140, 255, 0.25);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 35px rgba(0, 140, 255, 0.5);
+    /* CODE BOX */
+    .code-box {
+      width: 400px;
+      min-width: 300px;
+      background: #080f1d;
+      border: 1px solid #1e3a5f;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 0 50px rgba(0, 110, 255, 0.15);
     }
 
-    .btn-secondary {
-      border: 1px solid #1d4568;
-      color: #c8d4df;
-      background: #0a0f15;
+    .dots {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 25px;
     }
 
-    .btn-secondary:hover {
-      border-color: #008cff;
-      color: #008cff;
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #334155;
     }
 
-    /* =========================
-       SECTION
-    ========================= */
+    .code {
+      font-family: monospace;
+      color: #93c5fd;
+      font-size: 15px;
+      line-height: 2;
+    }
 
+    .blue {
+      color: #1683ff;
+    }
+
+    .white {
+      color: white;
+    }
+
+    /* SECTION */
     section {
-      padding: 90px 7%;
+      padding: 100px 25px;
+    }
+
+    .section-container {
+      max-width: 1100px;
+      margin: auto;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 45px;
+      margin-bottom: 55px;
     }
 
     .section-title h2 {
-      font-size: 35px;
-      margin-bottom: 10px;
+      font-size: 40px;
+    }
+
+    .section-title span {
+      color: #1683ff;
     }
 
     .section-title p {
-      color: #84909e;
+      color: #94a3b8;
+      margin-top: 10px;
     }
 
-    /* =========================
-       SERVICES
-    ========================= */
+    /* SERVICES */
+    .services {
+      background: #050b16;
+    }
 
     .cards {
-      max-width: 1100px;
-      margin: auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 25px;
     }
 
     .card {
+      background: #080f1d;
+      border: 1px solid #17243a;
       padding: 30px;
-      background: rgba(10, 15, 22, 0.85);
-      border: 1px solid rgba(0, 140, 255, 0.15);
-      border-radius: 18px;
+      border-radius: 15px;
       transition: 0.3s;
     }
 
     .card:hover {
       transform: translateY(-7px);
-      border-color: rgba(0, 140, 255, 0.6);
-      box-shadow: 0 15px 40px rgba(0, 100, 255, 0.12);
+      border-color: #1683ff;
+      box-shadow: 0 15px 40px rgba(0, 110, 255, 0.12);
     }
 
     .icon {
-      font-size: 35px;
-      margin-bottom: 18px;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0b1d38;
+      border: 1px solid #164d8a;
+      border-radius: 12px;
+      font-size: 25px;
+      margin-bottom: 20px;
     }
 
     .card h3 {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      font-size: 21px;
     }
 
     .card p {
-      color: #8995a3;
-      line-height: 1.6;
-      font-size: 14px;
+      color: #94a3b8;
     }
 
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
+    /* ABOUT */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
     }
 
-    .about p {
-      color: #9ba7b4;
-      line-height: 1.8;
-    }
-
-    /* =========================
-       CTA
-    ========================= */
-
-    .cta {
-      max-width: 900px;
-      margin: auto;
-      padding: 50px 30px;
-      text-align: center;
-      border: 1px solid rgba(0, 140, 255, 0.25);
-      border-radius: 25px;
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(0, 140, 255, 0.12),
-          rgba(5, 7, 10, 0.9)
-        );
-    }
-
-    .cta h2 {
+    .about-text h3 {
       font-size: 32px;
       margin-bottom: 15px;
     }
 
-    .cta p {
-      color: #929eaa;
+    .about-text h3 span {
+      color: #1683ff;
+    }
+
+    .about-text p {
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    .about-box {
+      background: #080f1d;
+      border: 1px solid #17243a;
+      padding: 35px;
+      border-radius: 15px;
+    }
+
+    .skill {
+      margin-bottom: 20px;
+    }
+
+    .skill-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+    }
+
+    .bar {
+      height: 8px;
+      background: #172033;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: #1683ff;
+      border-radius: 20px;
+    }
+
+    /* PORTFOLIO */
+    .portfolio {
+      background: #050b16;
+    }
+
+    .portfolio-card {
+      background: #080f1d;
+      border: 1px solid #17243a;
+      border-radius: 15px;
+      padding: 35px;
+      text-align: center;
+    }
+
+    .portfolio-preview {
+      height: 180px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #06152d, #0b2345);
+      border: 1px solid #164d8a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      font-size: 45px;
+      color: #1683ff;
+    }
+
+    .portfolio-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .portfolio-card p {
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      max-width: 750px;
+      margin: auto;
+      background: #080f1d;
+      border: 1px solid #17243a;
+      border-radius: 18px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box h2 span {
+      color: #1683ff;
+    }
+
+    .contact-box p {
+      color: #94a3b8;
       margin-bottom: 25px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
+    /* FOOTER */
     footer {
-      padding: 30px;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      color: #65717e;
-      font-size: 13px;
+      padding: 30px 20px;
+      background: #02050c;
+      border-top: 1px solid #111827;
+      color: #64748b;
     }
 
     footer span {
-      color: #008cff;
+      color: #1683ff;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* MOBILE */
+    @media (max-width: 800px) {
 
-    @media (max-width: 750px) {
-      nav {
-        padding: 16px 5%;
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #050b16;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        display: none;
+        border-bottom: 1px solid #17243a;
       }
 
-      nav div:last-child {
-        display: none;
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 15px;
+      }
+
+      .menu-btn {
+        display: block;
       }
 
       .hero {
-        min-height: 80vh;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
       }
 
-      .hero p {
-        font-size: 15px;
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .code-box {
+        width: 100%;
+        max-width: 450px;
       }
 
       .cards {
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 70px 5%;
+      .about-content {
+        grid-template-columns: 1fr;
       }
 
-      .opening-name {
-        font-size: 24px;
+      .section-title h2 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .hero h2 {
+        font-size: 25px;
+      }
+
+      .contact-box {
+        padding: 25px;
+      }
+    }
+
+    .ai-toggle{position:fixed;right:22px;bottom:22px;z-index:2000;width:58px;height:58px;border:1px solid #1683ff;border-radius:50%;background:#081425;color:#fff;font-size:24px;cursor:pointer;box-shadow:0 10px 35px rgba(0,110,255,.28);transition:.25s}.ai-toggle:hover{transform:translateY(-3px)}
+    .ai-panel{position:fixed;right:22px;bottom:92px;z-index:1999;width:min(390px,calc(100vw - 30px));height:min(570px,calc(100vh - 120px));display:none;flex-direction:column;overflow:hidden;background:#060d19;border:1px solid #1e3a5f;border-radius:18px;box-shadow:0 20px 70px rgba(0,0,0,.55)}.ai-panel.active{display:flex}
+    .ai-header{padding:15px 16px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#0a1c34,#07111f);border-bottom:1px solid #17243a}.ai-brand{display:flex;align-items:center;gap:10px}.ai-avatar{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#0b2a50;border:1px solid #1683ff}.ai-header strong{display:block;font-size:15px}.ai-status{color:#64748b;font-size:11px}.ai-close{background:none;border:0;color:#94a3b8;font-size:22px;cursor:pointer;padding:4px 8px}
+    .ai-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:11px}.ai-msg{max-width:88%;padding:11px 13px;border-radius:13px;font-size:13px;line-height:1.55;white-space:pre-wrap;word-break:break-word}.ai-msg.bot{align-self:flex-start;background:#0b1524;border:1px solid #17243a;color:#dbeafe}.ai-msg.user{align-self:flex-end;background:#087cff;color:#fff}
+    .ai-quick{display:flex;gap:7px;overflow-x:auto;padding:0 13px 10px}.ai-quick button{flex:0 0 auto;border:1px solid #1e3a5f;background:#09182b;color:#93c5fd;border-radius:999px;padding:7px 10px;font-size:11px;cursor:pointer}.ai-input-wrap{padding:11px;border-top:1px solid #17243a;background:#050b16;display:flex;gap:8px}.ai-input{flex:1;min-width:0;resize:none;height:44px;border:1px solid #1e3a5f;border-radius:10px;background:#080f1d;color:#f5f7ff;padding:11px;font:13px Arial;outline:none}.ai-input:focus{border-color:#1683ff}.ai-send{width:44px;border:0;border-radius:10px;background:#087cff;color:#fff;cursor:pointer;font-size:17px}@media(max-width:450px){.ai-toggle{right:15px;bottom:15px}.ai-panel{right:15px;bottom:84px;width:calc(100vw - 30px)}}
+
+
+    /* SIMPLE INTERACTION + OPENING ANIMATION */
+    #openingScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: grid;
+      place-items: center;
+      background: #030712;
+      transition: opacity .7s ease, visibility .7s ease;
+    }
+    #openingScreen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .opening-content {
+      text-align: center;
+      animation: openingUp .8s ease both;
+    }
+    .opening-logo {
+      font-size: clamp(34px, 8vw, 58px);
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    .opening-logo span { color: #1683ff; }
+    .opening-line {
+      width: 0;
+      height: 2px;
+      margin: 14px auto 10px;
+      background: #1683ff;
+      box-shadow: 0 0 18px rgba(22,131,255,.7);
+      animation: openingLine 1s .25s ease forwards;
+    }
+    .opening-sub {
+      color: #94a3b8;
+      font-size: 14px;
+      opacity: 0;
+      animation: openingFade .6s .55s ease forwards;
+    }
+    @keyframes openingUp {
+      from { opacity: 0; transform: translateY(16px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes openingLine { to { width: 150px; } }
+    @keyframes openingFade { to { opacity: 1; } }
+
+    /* Subtle interaction feedback; composition/layout unchanged */
+    .btn, .card, .portfolio-card, .code-box, .menu-btn {
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active {
+      transform: translateY(0) scale(.97);
+    }
+    .card:active, .portfolio-card:active {
+      transform: translateY(-3px) scale(.995);
+    }
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 7px;
+      width: 0;
+      height: 2px;
+      background: #1683ff;
+      transform: translateX(-50%);
+      transition: width .25s ease;
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      width: calc(100% - 30px);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #openingScreen, .opening-content, .opening-line, .opening-sub,
+      .reveal, .btn, .card, .portfolio-card, .nav-links a::after {
+        animation: none !important;
+        transition: none !important;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- =========================
-       OPENING SCREEN
-  ========================= -->
-
-  <div id="opening">
-    <div class="loader"></div>
-
-    <div class="opening-name">
-      RAFI<span>.</span>
-    </div>
-
-    <div class="loading">
-      LOADING...
+  <div id="openingScreen" aria-label="Opening">
+    <div class="opening-content">
+      <div class="opening-logo">Web <span>Selling</span></div>
+      <div class="opening-line"></div>
+      <div class="opening-sub">Developed by Rafi</div>
     </div>
   </div>
 
-
-  <div class="background-glow"></div>
-  <div class="background-glow two"></div>
-
-
-  <!-- =========================
-       NAVBAR
-  ========================= -->
-
+  <!-- NAVBAR -->
   <nav>
-    <div class="logo">
-      RAFI<span>.</span>
-    </div>
+    <div class="nav-container">
 
-    <div>
-      <a href="#home">Home</a>
-      <a href="#layanan">Layanan</a>
-      <a href="#tentang">Tentang</a>
-      <a href="#kontak">Kontak</a>
+      <a href="#home" class="logo">
+        Web <span>Selling</span>
+      </a>
+
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#services" onclick="closeMenu()">Services</a></li>
+        <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+      </ul>
+
     </div>
   </nav>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+  <!-- HERO -->
+  <section class="hero" id="home">
 
-  <main>
+    <div class="hero-text">
 
-    <section class="hero" id="home">
-      <div class="hero-content">
-
-        <div class="badge">
-          ✦ Web Developer
-        </div>
-
-        <h1>
-          Build Your<br>
-          <span>Digital Future.</span>
-        </h1>
-
-        <p>
-          Website modern, responsif, dan profesional
-          untuk membantu bisnis atau personal brand
-          tampil lebih keren di dunia digital.
-        </p>
-
-        <div class="buttons">
-          <a href="#layanan" class="btn btn-primary">
-            Lihat Layanan
-          </a>
-
-          <a href="#kontak" class="btn btn-secondary">
-            Hubungi Saya
-          </a>
-        </div>
-
+      <div class="small-title">
+        WEB DEVELOPER
       </div>
-    </section>
+
+      <h1>
+        Web <span>Selling</span>
+      </h1>
+
+      <h2>
+        Develope by <span>Rafi</span>
+      </h2>
+
+      <p>
+        Membuat website sederhana hingga profesional
+        dengan desain modern, responsif, dan nyaman digunakan.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#contact" class="btn">
+          Get Started →
+        </a>
+
+        <a href="#portfolio" class="btn btn-outline">
+          Lihat Portfolio
+        </a>
+      </div>
+
+    </div>
 
 
-    <!-- =========================
-         SERVICES
-    ========================= -->
+    <!-- CODE WINDOW -->
+    <div class="code-box">
 
-    <section id="layanan">
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <div class="code">
+        <div><span class="blue">&lt;website&gt;</span></div>
+
+        <div>
+          &nbsp;&nbsp;<span class="blue">&lt;title&gt;</span>
+          <span class="white">Web Selling</span>
+          <span class="blue">&lt;/title&gt;</span>
+        </div>
+
+        <div>
+          &nbsp;&nbsp;<span class="blue">&lt;developer&gt;</span>
+          <span class="white">Rafi</span>
+          <span class="blue">&lt;/developer&gt;</span>
+        </div>
+
+        <div>
+          &nbsp;&nbsp;<span class="blue">&lt;design&gt;</span>
+          <span class="white">Modern</span>
+          <span class="blue">&lt;/design&gt;</span>
+        </div>
+
+        <div>
+          &nbsp;&nbsp;<span class="blue">&lt;responsive&gt;</span>
+          <span class="white">true</span>
+          <span class="blue">&lt;/responsive&gt;</span>
+        </div>
+
+        <div>
+          &nbsp;&nbsp;<span class="blue">&lt;status&gt;</span>
+          <span class="white">Online ✓</span>
+          <span class="blue">&lt;/status&gt;</span>
+        </div>
+
+        <div><span class="blue">&lt;/website&gt;</span></div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="services reveal" id="services">
+
+    <div class="section-container">
 
       <div class="section-title">
-        <h2>Layanan</h2>
-        <p>Solusi website untuk kebutuhan digital kamu.</p>
+        <h2>My <span>Services</span></h2>
+        <p>Layanan website yang saya tawarkan</p>
       </div>
 
       <div class="cards">
 
         <div class="card">
-          <div class="icon">🌐</div>
-          <h3>Website Landing Page</h3>
+          <div class="icon">💻</div>
+          <h3>Web Development</h3>
           <p>
-            Landing page modern untuk promosi,
-            portofolio, produk, maupun personal brand.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">⚡</div>
-          <h3>Website Modern</h3>
-          <p>
-            Desain clean, cepat, responsif,
-            dan nyaman digunakan di HP maupun komputer.
+            Membuat website modern, cepat,
+            responsif, dan dapat dibuka di HP maupun komputer.
           </p>
         </div>
 
         <div class="card">
           <div class="icon">🎨</div>
-          <h3>Custom Design</h3>
+          <h3>Desain Minimalis</h3>
           <p>
-            Tampilan website dapat disesuaikan
-            dengan identitas dan kebutuhan kamu.
+            Tampilan bersih dan minimalis
+            yang nyaman dilihat serta mudah digunakan.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h3>Performance</h3>
+          <p>
+            Website dibuat ringan dan dioptimalkan
+            agar dapat dimuat dengan cepat.
           </p>
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
+  <!-- ABOUT -->
+  <section class="reveal" id="about">
 
-    <section id="tentang">
+    <div class="section-container">
 
       <div class="section-title">
-        <h2>Tentang</h2>
+        <h2>About <span>Me</span></h2>
+        <p>Mengenal developer di balik Web Selling</p>
       </div>
 
-      <div class="about">
+      <div class="about-content">
 
-        <p>
-          Halo! Saya <strong>Rafi</strong>.
-          Saya membuat website dengan tampilan
-          minimalis, modern, dan profesional.
-          Website dibuat agar tetap nyaman digunakan
-          pada berbagai ukuran layar.
-        </p>
+        <div class="about-text">
+
+          <h3>
+            Halo, saya <span>Rafi</span> 👋
+          </h3>
+
+          <p>
+            Saya adalah seorang web developer yang
+            membuat website dengan tampilan modern,
+            sederhana, dan responsif.
+          </p>
+
+          <p>
+            Saya fokus membuat website yang cocok
+            untuk personal branding, portfolio,
+            bisnis kecil, dan berbagai kebutuhan lainnya.
+          </p>
+
+          <a href="#contact" class="btn">
+            Hubungi Saya
+          </a>
+
+        </div>
+
+
+        <div class="about-box">
+
+          <div class="skill">
+
+            <div class="skill-title">
+              <span>HTML</span>
+              <span>90%</span>
+            </div>
+
+            <div class="bar">
+              <span style="width:90%"></span>
+            </div>
+
+          </div>
+
+
+          <div class="skill">
+
+            <div class="skill-title">
+              <span>CSS</span>
+              <span>85%</span>
+            </div>
+
+            <div class="bar">
+              <span style="width:85%"></span>
+            </div>
+
+          </div>
+
+
+          <div class="skill">
+
+            <div class="skill-title">
+              <span>JavaScript</span>
+              <span>75%</span>
+            </div>
+
+            <div class="bar">
+              <span style="width:75%"></span>
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================= -->
+  <!-- PORTFOLIO -->
+  <section class="portfolio reveal" id="portfolio">
 
-    <section id="kontak">
+    <div class="section-container">
 
-      <div class="cta">
+      <div class="section-title">
+        <h2>My <span>Portfolio</span></h2>
+        <p>Beberapa contoh website yang saya buat</p>
+      </div>
 
-        <h2>Punya project?</h2>
+      <div class="portfolio-card">
+
+        <div class="portfolio-preview">
+          &lt;/&gt;
+        </div>
+
+        <h3>Web Selling</h3>
 
         <p>
-          Mari buat website keren untuk kebutuhan kamu.
+          Website landing page dengan desain
+          minimalis hitam dan biru.
         </p>
 
-        <!-- GANTI NOMOR DI BAWAH -->
-        <a
-          href="https://wa.me/6285710742546"
-          class="btn btn-primary"
-          target="_blank"
-          rel="noopener noreferrer">
-          💬 Chat WhatsApp
+        <a href="#contact" class="btn">
+          Pesan Website
         </a>
 
       </div>
 
-    </section>
+    </div>
 
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
-  <footer>
-    © 2026 <span>Rafi Web Selling</span>.
-    All rights reserved.
-  </footer>
+  </section>
 
 
-  <!-- =========================
-       OPENING SCRIPT
-  ========================= -->
+  <!-- CONTACT -->
+  <section class="reveal" id="contact">
 
-  <script>
-    window.addEventListener("load", function () {
+    <div class="section-container">
 
-      setTimeout(function () {
-        const opening = document.getElementById("opening");
+      <div class="contact-box">
 
-        opening.classList.add("hide");
+        <h2>
+          Tertarik Membuat <span>Website?</span>
+        </h2>
 
-        setTimeout(function () {
-          opening.remove();
-        }, 900);
+        <p>
+          Hubungi saya untuk membuat website
+          sesuai kebutuhan kamu.
+        </p>
 
-      }, 2200);
+        <!-- GANTI NOMOR WHATSAPP DI LINK INI -->
+        <a
+          href="https://wa.me/6285710742546"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn"
+        >
+          💬 Hubungi via WhatsApp
+        </a>
 
-    });
-  </script>
+      </div>
 
-</body>
-          </html>
+    </div>
+
+  <
