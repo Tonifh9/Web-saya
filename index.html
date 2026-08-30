@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests">
   <meta name="description" content="Web Selling - Website modern dan profesional oleh Rafi.">
-  <title>Web Selling | Develope by Rafi</title>
+  <title>Web Selling | Developed by Rafi</title>
 
   <style>
     * {
@@ -98,6 +101,12 @@
       background: #0065d8;
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(0, 123, 255, 0.25);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 3px;
     }
 
     /* HERO */
@@ -489,7 +498,7 @@
         Web <span>Selling</span>
       </a>
 
-      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      <button class="menu-btn" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navLinks" onclick="toggleMenu()">☰</button>
 
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" onclick="closeMenu()">Home</a></li>
@@ -605,7 +614,7 @@
           <h3>Web Development</h3>
           <p>
             Membuat website modern, cepat,
-            responsif, dan dapat dibuka di HP maupun komputer.
+            responsif, dan aman dapat dibuka di HP maupun komputer.
           </p>
         </div>
 
@@ -791,26 +800,41 @@
 
   <!-- FOOTER -->
   <footer>
-    © 2026 <span>Web Selling</span> — Develope by Rafi
+    © 2026 <span>Web Selling</span> — Developed by Rafi
   </footer>
 
 
   <!-- JAVASCRIPT -->
   <script>
 
+    "use strict";
+
+    const navLinks = document.getElementById("navLinks");
+    const menuButton = document.querySelector(".menu-btn");
+
     function toggleMenu() {
-      document
-        .getElementById("navLinks")
-        .classList.toggle("active");
+      const isOpen = navLinks.classList.toggle("active");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
+      );
     }
 
     function closeMenu() {
-      document
-        .getElementById("navLinks")
-        .classList.remove("active");
+      navLinks.classList.remove("active");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Buka menu navigasi");
     }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
 
   </script>
 
 </body>
-        </html>
+    </html>
+  
