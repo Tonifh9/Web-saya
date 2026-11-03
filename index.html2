@@ -4,7 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXORA | Personal Portfolio</title>
+
+<title>RAFI PORTOFOLIO | Personal Website</title>
+
+<meta name="description" content="Website personal portfolio RAFI. Explore my profile, skills, projects and digital store.">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -64,9 +67,9 @@ nav {
 }
 
 .logo {
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   color: var(--neon);
 }
 
@@ -172,7 +175,7 @@ h2 {
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
-  box-shadow: 0 0 40px rgba(37,99,235,.12);
+  box-shadow: 0 0 40px rgba(37,99,235,.15);
 }
 
 .hero-image img {
@@ -442,6 +445,10 @@ footer span {
   .shop-grid {
     grid-template-columns: 1fr;
   }
+
+  .stats {
+    gap: 20px;
+  }
 }
 </style>
 </head>
@@ -449,9 +456,10 @@ footer span {
 <body>
 
 <!-- NAVBAR -->
+
 <header>
 <nav>
-  <a href="#home" class="logo">NEXORA.</a>
+  <a href="#home" class="logo">RAFI.</a>
 
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
@@ -469,12 +477,13 @@ footer span {
 </header>
 
 <!-- HOME -->
+
 <section class="hero" id="home">
 
   <div class="hero-content">
-    <p class="label">WELCOME TO MY WORLD</p>
+    <p class="label">WELCOME TO MY PORTFOLIO</p>
 
-    <h1>Hello, I'm <span>Nama Kamu.</span></h1>
+    <h1>Hello, I'm <span>RAFI.</span></h1>
 
     <p class="description">
       Saya adalah seorang kreator yang tertarik pada dunia
@@ -491,10 +500,12 @@ footer span {
         <strong>03+</strong>
         <small>Skills</small>
       </div>
+
       <div>
         <strong>05+</strong>
         <small>Projects</small>
       </div>
+
       <div>
         <strong>100%</strong>
         <small>Creativity</small>
@@ -504,26 +515,28 @@ footer span {
 
   <div class="hero-image">
     <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900"
-    alt="Workspace">
+    alt="Workspace RAFI">
   </div>
 
 </section>
 
 <!-- ABOUT -->
+
 <section class="about" id="about">
 <div class="container about-grid">
 
   <div class="about-image">
     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900"
-    alt="About me">
+    alt="About RAFI">
   </div>
 
   <div class="about-text">
     <p class="label">ABOUT ME</p>
+
     <h2>Who Am I?</h2>
 
     <p>
-      Halo! Nama saya <b>Nama Kamu</b>.
+      Halo! Nama saya <b>RAFI</b>.
       Saya memiliki ketertarikan pada teknologi,
       desain, dan pengembangan digital.
     </p>
@@ -533,7 +546,7 @@ footer span {
       mengembangkan kreativitas, serta menciptakan
       sesuatu yang bermanfaat.
       Website ini menjadi tempat untuk memperkenalkan
-      diri, membagikan karya, dan menjual produk.
+      diri, membagikan karya, dan menawarkan produk.
     </p>
 
     <a href="#contact" class="primary-btn">
@@ -545,9 +558,11 @@ footer span {
 </section>
 
 <!-- SKILLS -->
+
 <section class="container" id="skills">
 
   <p class="label">MY ABILITIES</p>
+
   <h2>Skills & Expertise.</h2>
 
   <p class="description">
@@ -590,10 +605,12 @@ footer span {
 </section>
 
 <!-- PORTFOLIO -->
+
 <section class="portfolio" id="portfolio">
 <div class="container">
 
   <p class="label">MY WORK</p>
+
   <h2>Selected Projects.</h2>
 
   <p class="description">
@@ -604,7 +621,8 @@ footer span {
 
     <div class="project">
       <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900"
-      alt="Web design">
+      alt="Website Development">
+
       <div class="project-info">
         <h3>Website Development</h3>
         <p>Website Design & Development</p>
@@ -613,7 +631,8 @@ footer span {
 
     <div class="project">
       <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=900"
-      alt="Creative design">
+      alt="Creative Design">
+
       <div class="project-info">
         <h3>Creative Design</h3>
         <p>Graphic Design & Branding</p>
@@ -625,55 +644,66 @@ footer span {
 </section>
 
 <!-- SHOP -->
+
 <section class="container" id="shop">
 
-  <p class="label">ONLINE STORE</p>
+  <p class="label">MY ONLINE STORE</p>
+
   <h2>Explore Products.</h2>
 
   <p class="description">
-    Temukan produk pilihan yang tersedia di toko kami.
+    Temukan produk pilihan yang tersedia di toko saya.
   </p>
 
   <div class="shop-grid">
 
     <div class="product">
       <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=700"
-      alt="Laptop">
+      alt="Digital Product">
+
       <div class="product-info">
         <h3>Digital Product</h3>
         <p>Produk digital berkualitas.</p>
+
         <div class="price">Rp150.000</div>
+
         <button class="buy-btn"
         onclick="addCart('Digital Product',150000)">
-        Add to Cart
+          Add to Cart
         </button>
       </div>
     </div>
 
     <div class="product">
       <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=700"
-      alt="Book">
+      alt="Creative Collection">
+
       <div class="product-info">
         <h3>Creative Collection</h3>
         <p>Koleksi produk kreatif.</p>
+
         <div class="price">Rp85.000</div>
+
         <button class="buy-btn"
         onclick="addCart('Creative Collection',85000)">
-        Add to Cart
+          Add to Cart
         </button>
       </div>
     </div>
 
     <div class="product">
       <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700"
-      alt="Watch">
+      alt="Premium Collection">
+
       <div class="product-info">
         <h3>Premium Collection</h3>
         <p>Produk pilihan eksklusif.</p>
+
         <div class="price">Rp250.000</div>
+
         <button class="buy-btn"
         onclick="addCart('Premium Collection',250000)">
-        Add to Cart
+          Add to Cart
         </button>
       </div>
     </div>
@@ -682,10 +712,12 @@ footer span {
 </section>
 
 <!-- CONTACT -->
+
 <section class="contact" id="contact">
 <div class="container">
 
   <p class="label">GET IN TOUCH</p>
+
   <h2>Let's Work Together.</h2>
 
   <p class="description">
@@ -694,50 +726,67 @@ footer span {
   </p>
 
   <div class="contact-links">
-    <a href="mailto:emailkamu@gmail.com">Email</a>
-    <a href="https://instagram.com/" target="_blank">Instagram</a>
-    <a href="https://wa.me/6281234567890" target="_blank">WhatsApp</a>
+
+    <a href="mailto:rafisyakir34@gmail.com">
+      Email Me
+    </a>
+
+    <a href="https://instagram.com/" target="_blank">
+      Instagram
+    </a>
+
+    <a href="https://wa.me/6285710742546" target="_blank">
+      WhatsApp
+    </a>
+
   </div>
 
 </div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
-  <p>© 2026 <span>NEXORA.</span> All Rights Reserved.</p>
+  <p>© 2026 <span>RAFI PORTOFOLIO.</span> All Rights Reserved.</p>
   <p>Designed with simplicity & creativity.</p>
 </footer>
 
-<script>
+<!-- JAVASCRIPT -->
 
-// SHOPPING CART
+<script>
 
 let cart = [];
 
 function addCart(name, price) {
-  cart.push({name, price});
 
-  document.getElementById("count").textContent =
-  cart.length;
+  cart.push({
+    name: name,
+    price: price
+  });
 
-  alert(name + " berhasil ditambahkan!");
+  document.getElementById("count").textContent = cart.length;
+
+  alert(name + " berhasil ditambahkan ke keranjang!");
 }
 
 function showCart() {
 
   if(cart.length === 0) {
-    alert("Keranjang masih kosong.");
+    alert("Keranjang belanja masih kosong.");
     return;
   }
 
   let total = 0;
-  let detail = "KERANJANG BELANJA\n\n";
+
+  let detail = "RAFI PORTOFOLIO - KERANJANG\n\n";
 
   cart.forEach((item, index) => {
+
     detail += (index + 1) + ". " + item.name +
     " - Rp" + item.price.toLocaleString("id-ID") + "\n";
 
     total += item.price;
+
   });
 
   detail += "\nTotal: Rp" + total.toLocaleString("id-ID");
